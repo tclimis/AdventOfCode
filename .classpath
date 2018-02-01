@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/tim/projects/AdventOfCode/resources/2015/day9/commons-collections4-4.1/commons-collections4-4.1.jar"/>
+	<classpathentry kind="lib" path="/usr/share/jackson-2/lib/jackson.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/usr/share/doc/jackson-2.5.2/html/api/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/usr/share/jackson-databind-2/lib/jackson-databind.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/usr/share/doc/jackson-databind-2.5.2/html/api/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/usr/share/jackson-annotations-2/lib/jackson-annotations.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/usr/share/doc/jackson-annotations-2.5.2/html/api/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre8"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

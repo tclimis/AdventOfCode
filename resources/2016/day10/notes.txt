@@ -1,0 +1,10 @@
+Robot class:
+	int hand1
+	int hand2
+	small recipient
+	large recipient
+
+	areHandsFull
+	giveHandContents
+	initHand
+	isSmall
