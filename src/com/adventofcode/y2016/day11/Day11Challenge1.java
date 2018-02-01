@@ -30,13 +30,17 @@ public class Day11Challenge1 extends AbstractChallenge {
 	}
 
 	protected Integer getStart() {
+		// initial state
+		//       C1c1P0p0R1r1S0s0T1t2E0
 		return 0b0101000001010000011000;
 	}
 
 	protected Integer getEnd() {
+		// everything on the 3rd floor
 		return 0b1111111111111111111111;
 	}
 
+	// Dijkstra's Algorithm
 	private double findShortestPath() {
 		List<Node> nodesToVisit = new ArrayList<Node>();
 
