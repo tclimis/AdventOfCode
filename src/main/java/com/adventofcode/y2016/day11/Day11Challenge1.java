@@ -25,6 +25,12 @@ public class Day11Challenge1 extends AbstractChallenge {
 		}
 	}
 
+	@Override
+	// This should read the file, and set the start state
+	public void processLine(String input) {
+		// TODO Auto-generated method stub
+	}
+
 	protected Integer getStart() {
 		// initial state
 		//       C1c1P0p0R1r1S0s0T1t2E0
@@ -68,4 +74,5 @@ public class Day11Challenge1 extends AbstractChallenge {
 		double pathLength = findShortestPath();
 		return String.valueOf(pathLength);
 	}
+
 }
