@@ -9,11 +9,11 @@ public class Day1Challenge2 extends Day1Challenge1 {
 		setSteps(0);
 	}
 	
-	private void setSteps(int steps) {
+	private void setSteps(final int steps) {
 		this.steps = steps;
 	}
-	
-	public void processLine(String input) {
+
+	public void processLine(final String input) {
 		for( int i = 0; i < input.length(); i++ ) {
 			if( getFloor() >= 0 ) {
 				super.move(input.charAt(i));

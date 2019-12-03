@@ -10,47 +10,47 @@ public class Day11Challenge1 extends AbstractChallenge {
 		setNewPassword("");
 	}
 	
-	private void setNewPassword(String newPassword) {
+	private void setNewPassword(final String newPassword) {
 		this.newPassword = newPassword;
 	}
 
-	public void processLine(String input) {
+	public void processLine(final String input) {
 		setNewPassword(createNewPassword(input));
 	}
 
-	private String createNewPassword(String oldPassword) {
+	private String createNewPassword(final String oldPassword) {
 		String newPassword = ensureEightAlphaLowerCase(oldPassword);
-		while( oldPassword.equals(newPassword) || !containsStraight(newPassword) || !containsTwoDoubles(newPassword)
-				|| containsIOL(newPassword) ) {
+		while (oldPassword.equals(newPassword) || !containsStraight(newPassword) || !containsTwoDoubles(newPassword)
+				|| containsIOL(newPassword)) {
 			newPassword = nextPassword(newPassword);
 		}
 		return newPassword;
 	}
 
-	private String ensureEightAlphaLowerCase(String oldPassword) {
+	private String ensureEightAlphaLowerCase(final String oldPassword) {
 		String passwordFiller = "";
 		oldPassword.toLowerCase().replaceAll("[^a-z]", "");
-		for( int i = 0; i < 8 - oldPassword.length(); i++ ) {
+		for (int i = 0; i < 8 - oldPassword.length(); i++) {
 			passwordFiller += "a";
 		}
 
 		return (oldPassword + passwordFiller).substring(0, 8);
 	}
 
-	private boolean containsStraight(String string) {
-		for( int i = 2; i < string.length(); i++ ) {
-			if( string.charAt(i - 2) == string.charAt(i) - 2 && string.charAt(i - 1) == string.charAt(i) - 1 ) {
+	private boolean containsStraight(final String string) {
+		for (int i = 2; i < string.length(); i++) {
+			if (string.charAt(i - 2) == string.charAt(i) - 2 && string.charAt(i - 1) == string.charAt(i) - 1) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private boolean containsTwoDoubles(String string) {
+	private boolean containsTwoDoubles(final String string) {
 		int doublesFound = 0;
 		char previousDoubleChar = '\0';
-		for( int i = 1; i < string.length() && doublesFound < 2; i++ ) {
-			if( string.charAt(i) != previousDoubleChar && string.charAt(i - 1) == string.charAt(i) ) {
+		for (int i = 1; i < string.length() && doublesFound < 2; i++) {
+			if (string.charAt(i) != previousDoubleChar && string.charAt(i - 1) == string.charAt(i)) {
 				previousDoubleChar = string.charAt(i);
 				doublesFound++;
 			}
@@ -58,12 +58,12 @@ public class Day11Challenge1 extends AbstractChallenge {
 		return doublesFound >= 2;
 	}
 
-	private boolean containsIOL(String string) {
+	private boolean containsIOL(final String string) {
 		return string.matches("[ilo]");
 	}
 
-	private String nextPassword(String password) {
-		char[] letters = password.toCharArray();
+	private String nextPassword(final String password) {
+		final char[] letters = password.toCharArray();
 
 		boolean carry = false;
 		for( int i = letters.length - 1; i >= 0; i-- ) {

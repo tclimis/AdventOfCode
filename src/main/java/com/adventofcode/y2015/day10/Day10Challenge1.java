@@ -10,24 +10,24 @@ public class Day10Challenge1 extends AbstractChallenge {
 		setPattern("");
 	}
 	
-	private void setPattern(String pattern) {
+	private void setPattern(final String pattern) {
 		this.pattern = pattern;
 	}
 	
-	public void processLine(String input) {
-		String[] args = input.split(" ");
+	public void processLine(final String input) {
+		final String[] args = input.split(" ");
 		if( args.length == 2 ) {
 			setPattern(args[0]);
-			int iterations = setIterations(args[1]);
+			final int iterations = setIterations(args[1]);
 			setPattern(getNewPattern(getPattern(), iterations));
 		}
 	}
 	
-	private int setIterations(String arg) {
+	private int setIterations(final String arg) {
 		try {
 			return Integer.valueOf(arg).intValue();
 		}
-		catch( NumberFormatException e ) {
+		catch( final NumberFormatException e ) {
 			return 0;
 		}
 	}
@@ -36,7 +36,7 @@ public class Day10Challenge1 extends AbstractChallenge {
 		return this.pattern;
 	}
 
-	private String getNewPattern(String pattern, int iterations) {
+	private String getNewPattern(final String pattern, final int iterations) {
 		if( iterations == 0 ) {
 			return pattern;
 		}
