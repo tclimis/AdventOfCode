@@ -6,16 +6,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Debug (Launch) - Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-AdventExecuter<AdventOfCode>",
+            "name": "Debug (Launch) with Arguments Prompt",
             "request": "launch",
             "mainClass": "com.adventofcode.AdventExecuter",
-            "projectName": "AdventOfCode"
+            "args": "${command:SpecifyProgramArgs}"
         }
     ]
 }
