@@ -15,7 +15,7 @@ public class Day1Challenge1 extends AbstractChallenge {
     }
 
     @Override
-    public void processLine(String input) {
+    public void processLine(final String input) {
         getModuleMasses().add(Integer.valueOf(input));
     }
 
@@ -26,13 +26,13 @@ public class Day1Challenge1 extends AbstractChallenge {
     @Override
     public String getOutput() {
         Integer totalFuelRequirement = 0;
-        for( Integer moduleMass : getModuleMasses() ) {
+        for (final Integer moduleMass : getModuleMasses()) {
             totalFuelRequirement += getModuleFuelRequirement(moduleMass);
         }
         return totalFuelRequirement.toString();
     }
 
-    private Integer getModuleFuelRequirement(Integer moduleMass) {
+    protected Integer getModuleFuelRequirement(final Integer moduleMass) {
         return moduleMass / 3 - 2;
     }
     
