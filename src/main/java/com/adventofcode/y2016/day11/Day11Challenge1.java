@@ -16,7 +16,7 @@ public class Day11Challenge1 extends AbstractChallenge {
 	}
 	
 	private void buildGraph() {
-		this.graph = new HashMap<Integer, Node>();
+		this.graph = new HashMap<>();
 		for( int i = 0; i <= getEnd(); i++ ) {
 			Node node = new Node(i);
 			if( node.isValid() ) {
@@ -44,7 +44,7 @@ public class Day11Challenge1 extends AbstractChallenge {
 
 	// Dijkstra's Algorithm
 	private double findShortestPath() {
-		List<Node> nodesToVisit = new ArrayList<Node>();
+		List<Node> nodesToVisit = new ArrayList<>();
 
 		Node root = this.graph.get(new Node(getStart()).getLabel());
 		root.setDistance(0);

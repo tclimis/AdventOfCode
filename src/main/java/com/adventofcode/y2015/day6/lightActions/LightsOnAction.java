@@ -1,7 +1,7 @@
 package com.adventofcode.y2015.day6.lightActions;
 
 
-public class LightsOnAction extends AbstractLightAction implements LightAction {
+public class LightsOnAction extends AbstractLightAction {
 
 	public void execute(int[][] lightField) {
 		for (int i = getNWCorner().x; i <= getSECorner().x; i++) {
@@ -9,7 +9,6 @@ public class LightsOnAction extends AbstractLightAction implements LightAction {
 				lightField[i][j] = 1;
 			}
 		}
-		return;
 	}
 
 }

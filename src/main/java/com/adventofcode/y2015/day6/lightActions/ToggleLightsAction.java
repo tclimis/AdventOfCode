@@ -1,9 +1,7 @@
 package com.adventofcode.y2015.day6.lightActions;
 
 
-public class ToggleLightsAction extends AbstractLightAction implements
-		LightAction {
-
+public class ToggleLightsAction extends AbstractLightAction {
 	
 	public void execute(int[][] lightField) {
 		for (int i = getNWCorner().x; i <= getSECorner().x; i++) {
@@ -11,7 +9,6 @@ public class ToggleLightsAction extends AbstractLightAction implements
 				lightField[i][j] = (lightField[i][j] == 1) ? 0 : 1;
 			}
 		}
-		return;
 	}
 
 }
