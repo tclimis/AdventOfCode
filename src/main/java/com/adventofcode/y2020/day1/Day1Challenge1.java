@@ -9,7 +9,7 @@ import com.adventofcode.AbstractChallenge;
 public class Day1Challenge1 extends AbstractChallenge {
 
     private List<Integer> expenses;
-    private static final Integer TOTAL = 2020;
+    protected static final Integer TOTAL = 2020;
 
     @Override
     public void initialize() {
@@ -21,7 +21,7 @@ public class Day1Challenge1 extends AbstractChallenge {
         getExpenses().add(Integer.parseInt(input));
     }
 
-    private List<Integer> getExpenses() {
+    protected List<Integer> getExpenses() {
         return expenses;
     }
 
