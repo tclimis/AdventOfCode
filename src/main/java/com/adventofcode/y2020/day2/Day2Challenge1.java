@@ -31,8 +31,8 @@ public class Day2Challenge1 extends AbstractChallenge {
         return "";
     }
 
-    private PasswordRule getPasswordRule(String input) {
-        return new PasswordRule(input.split(":")[0]);
+    protected PasswordRule getPasswordRule(String input) {
+        return new CountPasswordRule(input.split(":")[0]);
     }
 
     private void incrementPasswordCount() {
