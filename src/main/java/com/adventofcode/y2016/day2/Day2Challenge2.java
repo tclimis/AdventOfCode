@@ -19,6 +19,7 @@ public class Day2Challenge2 extends Day2Challenge1 {
 	private static final Point C = new Point(3, 1);
 	private static final Point D = new Point(2, 0);
 
+	@Override
 	protected void setupNumberMap() {
 		numberMap = new HashMap<Point, String>();
 		getNumberMap().putIfAbsent(ONE, "1");

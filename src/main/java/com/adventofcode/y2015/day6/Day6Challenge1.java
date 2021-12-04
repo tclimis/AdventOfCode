@@ -1,7 +1,7 @@
 package com.adventofcode.y2015.day6;
 
 import com.adventofcode.AbstractChallenge;
-import com.adventofcode.y2015.day6.lightActions.LightAction;
+import com.adventofcode.y2015.day6.light_actions.LightAction;
 
 public class Day6Challenge1 extends AbstractChallenge {
 	

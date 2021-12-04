@@ -12,8 +12,7 @@ public class Day12FileParser extends BasicFileParser {
 	}
 
 	public Object getJSONTree() {
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper;
+		return new ObjectMapper();
 	}
 
 }

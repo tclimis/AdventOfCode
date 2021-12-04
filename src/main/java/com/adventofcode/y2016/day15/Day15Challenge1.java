@@ -13,7 +13,9 @@ public class Day15Challenge1 extends AbstractChallenge {
 		this.time = 0;
 	}
 	
-	public void processLine(String input) { }
+	public void processLine(String input) { 
+		// no lines
+	}
 	
 	public String getOutput() {
 		int[] end = new int[getSizes().length];

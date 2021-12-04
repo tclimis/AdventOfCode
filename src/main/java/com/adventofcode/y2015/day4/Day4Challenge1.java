@@ -25,7 +25,7 @@ public class Day4Challenge1 extends AbstractChallenge {
 	}
 
 	private boolean md5StartsWith00000(String line, int number) {
-		String value = line + Integer.valueOf(number).toString();
+		String value = line + Integer.toString(number);
 		try {
 			byte[] md5Bytes = MessageDigest.getInstance("MD5").digest(value.getBytes(StandardCharsets.UTF_8));
 			return (md5Bytes[0] == 0 && md5Bytes[1] == 0 && md5Bytes[2] >= 0 && md5Bytes[2] < 16);

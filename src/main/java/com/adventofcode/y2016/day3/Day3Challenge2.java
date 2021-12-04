@@ -5,12 +5,14 @@ public class Day3Challenge2 extends Day3Challenge1 {
 	private int[][] matrix;
 	private int i;
 	
+	@Override
 	public void initialize() {
 		super.initialize();
 		matrix = new int[3][3];
 		i = 0;
 	}
 	
+	@Override
 	public void processLine(String input) {
 		String[] numbers = input.trim().split("\\s+");
 		matrix[i % 3] = convertArray(numbers);

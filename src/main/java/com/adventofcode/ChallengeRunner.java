@@ -3,6 +3,8 @@ package com.adventofcode;
 import java.io.File;
 
 public class ChallengeRunner {
+
+	private ChallengeRunner() {}
 		
 	public static String run(Challenge challenge, File inputFile) {
 		challenge.initialize();

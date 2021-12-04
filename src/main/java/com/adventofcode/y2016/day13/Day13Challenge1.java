@@ -9,10 +9,18 @@ import java.util.Map;
 import com.adventofcode.AbstractChallenge;
 
 public class Day13Challenge1 extends AbstractChallenge {
+
+	protected static final int INPUT = 1350;
 	
-	public void initialize() {	}
+	@Override
+	public void initialize() {	
+		// there's nothing to intialize for this challenge
+	}
 	
-	public void processLine(String input) {	}
+	@Override
+	public void processLine(String input) {	
+		// no inputs to process		
+	}
 	
 	public String getOutput() {
 		double pathLength = findShortestPath();
@@ -20,10 +28,10 @@ public class Day13Challenge1 extends AbstractChallenge {
 	}
 
 	private double findShortestPath() {
-		List<Node> nodesToVisit = new ArrayList<Node>();
-		Map<Point, Node> graph = new HashMap<Point, Node>();
+		List<Node> nodesToVisit = new ArrayList<>();
+		Map<Point, Node> graph = new HashMap<>();
 
-		Node root = new Node(getStart(), getInput());
+		Node root = new Node(getStart(), INPUT);
 		root.setDistance(0);
 		nodesToVisit.add(root);
 		graph.put(getStart(), root);
@@ -31,7 +39,7 @@ public class Day13Challenge1 extends AbstractChallenge {
 		while( !nodesToVisit.isEmpty() ) {
 			Node current = nodesToVisit.remove(0);
 			for( Point node : current.getAdjacencyList() ) {
-				Node adjacentNode = graph.containsKey(node) ? graph.get(node) : new Node(node, getInput());
+				Node adjacentNode = graph.containsKey(node) ? graph.get(node) : new Node(node, INPUT);
 				if( Double.isInfinite(adjacentNode.getDistance()) ) {
 					adjacentNode.setDistance(current.getDistance() + 1);
 					graph.put(node, adjacentNode);
@@ -49,10 +57,6 @@ public class Day13Challenge1 extends AbstractChallenge {
 
 	protected Point getStart() {
 		return new Point(1, 1);
-	}
-
-	protected int getInput() {
-		return 1350;
 	}
 
 	private Point getEnd() {

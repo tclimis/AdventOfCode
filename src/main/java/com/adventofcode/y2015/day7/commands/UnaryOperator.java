@@ -8,7 +8,7 @@ public abstract class UnaryOperator implements Command {
 	private String sourceVariable;
 	private String destinationVariable;
 	
-	public UnaryOperator(String param, String var) {
+	protected UnaryOperator(String param, String variable) {
 		try {
 			Integer val = Integer.valueOf(param);
 			setValue(val);
@@ -16,7 +16,7 @@ public abstract class UnaryOperator implements Command {
 		catch( NumberFormatException e ) {
 			setSourceVariable(param);
 		}
-		setDestinationVariable(var);
+		setDestinationVariable(variable);
 	}
 	
 	protected void setValue(Integer value) {

@@ -13,11 +13,11 @@ public class Day6Challenge1 extends AbstractChallenge {
 	private List<Map<Character, Integer>> letterCountMapList;
 
 	public void initialize() {
-		letterCountMapList = new ArrayList<Map<Character, Integer>>();
+		letterCountMapList = new ArrayList<>();
 	}
 	
 	public void processLine(String input) {
-		if( getLetterCountMapList().size() == 0 ) {
+		if( getLetterCountMapList().isEmpty() ) {
 			initializeLetterCountMaps(input.length());
 		}
 		tallyLetters(input);
@@ -29,7 +29,7 @@ public class Day6Challenge1 extends AbstractChallenge {
 
 	private void initializeLetterCountMaps(int lineLength) {
 		for( int i = 0; i < lineLength; i++ ) {
-			getLetterCountMapList().add(new HashMap<Character, Integer>());
+			getLetterCountMapList().add(new HashMap<>());
 		}
 	}
 
@@ -49,12 +49,12 @@ public class Day6Challenge1 extends AbstractChallenge {
 	}
 	
 	public String getOutput() {
-		String output = "";
+		StringBuilder output = new StringBuilder();
 		for( Map<Character, Integer> position : getLetterCountMapList() ) {
-			output += getMostCommonLetter(position);
+			output.append(getMostCommonLetter(position));
 		}
 
-		return output;
+		return output.toString();
 	}
 
 	private String getMostCommonLetter(Map<Character, Integer> position) {

@@ -2,6 +2,7 @@ package com.adventofcode.y2015.day5;
 
 public class Day5Challenge2 extends Day5Challenge1 {
 	
+	@Override
 	protected boolean shouldIncreaseNice(String name) {
 		return hasRepeatedTwoLetter(name) 
 				&& hasThreeLetterSandwich(name);

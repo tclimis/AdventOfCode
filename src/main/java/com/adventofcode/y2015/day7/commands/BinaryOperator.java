@@ -10,7 +10,7 @@ public abstract class BinaryOperator implements Command {
 	private String sourceVariable2;
 	private String destinationVariable;
 
-	public BinaryOperator(String param1, String param2, String var) {
+	protected BinaryOperator(String param1, String param2, String variable) {
 		try {
 			Integer val1 = Integer.valueOf(param1);
 			setValue1(val1);
@@ -25,7 +25,7 @@ public abstract class BinaryOperator implements Command {
 			setSourceVariable2(param2);
 		}
 
-		setDestinationVariable(var);
+		setDestinationVariable(variable);
 	}
 
 	protected void setValue1(Integer value) {

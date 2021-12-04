@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class Day9Challenge2 extends Day9Challenge1 {
 	
+	@Override
 	public String getOutput() {
 		long decompressedLength = getDecompressedLength(compressedFile);
 		return String.valueOf(decompressedLength);

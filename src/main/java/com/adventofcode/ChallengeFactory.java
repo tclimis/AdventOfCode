@@ -2,6 +2,8 @@ package com.adventofcode;
 
 public class ChallengeFactory {
 
+	private ChallengeFactory() {}
+
 	public static Challenge createChallenge(final int year, final int day, final int challenge) {
 		try {
 			final String packageName = "com.adventofcode.y" + year + ".day" + day;

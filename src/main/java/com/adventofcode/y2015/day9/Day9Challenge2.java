@@ -8,13 +8,14 @@ import org.apache.commons.collections4.iterators.PermutationIterator;
 
 public class Day9Challenge2 extends Day9Challenge1 {
 	
+	@Override
 	public String getOutput() {
 		Collection<Integer> cityIndices = getCityIndexCollection();
-		PermutationIterator<Integer> cityPermuations = new PermutationIterator<Integer>(cityIndices);
+		PermutationIterator<Integer> cityPermuations = new PermutationIterator<>(cityIndices);
 		
 		int longestPathLength = findLongestPath(cityPermuations, adjacencyMatrix);
 
-		return Integer.valueOf(longestPathLength).toString();
+		return Integer.toString(longestPathLength);
 	}
 
 	private int findLongestPath(PermutationIterator<Integer> cityPermutations, Map<Point,Integer> adjacencyMatrix) {

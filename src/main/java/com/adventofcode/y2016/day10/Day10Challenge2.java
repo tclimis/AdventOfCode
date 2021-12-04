@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 public class Day10Challenge2 extends Day10Challenge1 {
 	
+	@Override
 	public String getOutput() {
 		Iterator<Robot> robots = getRobots().values().iterator();
 		boolean robotsAreEmpty = true;
@@ -33,8 +34,8 @@ public class Day10Challenge2 extends Day10Challenge1 {
 	}
 
 	private boolean outboxesContainValues() {
-		return getOutputs().get(0).getContents().size() > 0 && getOutputs().get(1).getContents().size() > 0
-				&& getOutputs().get(2).getContents().size() > 0;
+		return !getOutputs().get(0).getContents().isEmpty() && !getOutputs().get(1).getContents().isEmpty()
+				&& !getOutputs().get(2).getContents().isEmpty();
 	}
 
 	private int getOutboxProduct() {

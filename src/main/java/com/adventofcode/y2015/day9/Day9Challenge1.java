@@ -15,8 +15,8 @@ public class Day9Challenge1 extends AbstractChallenge {
 	protected Map<Point, Integer> adjacencyMatrix;
 
 	public void initialize() {
-		vertexMap = new HashMap<String, Integer>();
-		adjacencyMatrix = new HashMap<Point, Integer>();
+		vertexMap = new HashMap<>();
+		adjacencyMatrix = new HashMap<>();
 	}
 	
 	public void processLine(String input) {
@@ -67,7 +67,7 @@ public class Day9Challenge1 extends AbstractChallenge {
 
 	public String getOutput() {
 		Collection<Integer> cityIndices = getCityIndexCollection();
-		PermutationIterator<Integer> cityPermuations = new PermutationIterator<Integer>(cityIndices);
+		PermutationIterator<Integer> cityPermuations = new PermutationIterator<>(cityIndices);
 		
 		int shortestPathLength = findShortestPath(cityPermuations, adjacencyMatrix);
 		

@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class Day7Challenge2 extends Day7Challenge1 {
 	
+	@Override
 	public void processLine(String input) {
 		if( supportsSSL(input) ) {
 			count++;
@@ -14,7 +15,7 @@ public class Day7Challenge2 extends Day7Challenge1 {
 	}
 
 	private boolean supportsSSL(String ipAddress) {
-		List<String> babs = new ArrayList<String>();
+		List<String> babs = new ArrayList<>();
 		String[] ipSegments = ipAddress.split("[\\[\\]]");
 		for( String hyperNet : getHyperNets(ipAddress) ) {
 			babs.addAll(findBABs(hyperNet));
@@ -30,7 +31,7 @@ public class Day7Challenge2 extends Day7Challenge1 {
 	}
 
 	private List<String> findBABs(String str) {
-		List<String> babs = new ArrayList<String>();
+		List<String> babs = new ArrayList<>();
 		Pattern pattern = Pattern.compile("([a-z])(?!\\1)[a-z]\\1");
 		Matcher matcher = pattern.matcher(str);
 		int i = 0;

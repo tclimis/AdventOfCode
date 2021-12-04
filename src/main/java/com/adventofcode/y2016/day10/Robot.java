@@ -25,7 +25,7 @@ public class Robot implements Recipient {
 		setID(id);
 		setRecipientLow(recipLow);
 		setRecipientHigh(recipHigh);
-		this.contents = new ArrayList<Integer>();
+		this.contents = new ArrayList<>();
 	}
 
 	private void setID(int id) {

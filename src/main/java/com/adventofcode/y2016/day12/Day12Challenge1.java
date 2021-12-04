@@ -15,11 +15,11 @@ public class Day12Challenge1 extends AbstractChallenge {
 
 	public void initialize() {
 		initializeRegisters();
-		this.program = new ArrayList<String>();
+		this.program = new ArrayList<>();
 	}
 	
 	private void initializeRegisters() {
-		this.registers = new HashMap<String, Integer>();
+		this.registers = new HashMap<>();
 		getRegisters().put("a", 0);
 		getRegisters().put("b", 0);
 		getRegisters().put("c", 0);

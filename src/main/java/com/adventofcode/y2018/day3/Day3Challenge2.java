@@ -8,11 +8,13 @@ public class Day3Challenge2 extends Day3Challenge1 {
 	
 	private List<Rectangle> rectangles;
 	
+	@Override
 	public void initialize() {
 		super.initialize();
-		rectangles = new ArrayList<Rectangle>();
+		rectangles = new ArrayList<>();
 	}
 	
+	@Override
 	protected void fillPoints(Rectangle rectangle) {
 		rectangles.add(rectangle);
 		

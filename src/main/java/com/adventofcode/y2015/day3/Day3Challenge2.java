@@ -6,6 +6,7 @@ public class Day3Challenge2 extends Day3Challenge1 {
 
 	private Point roboSantaLocation = new Point();
 	
+	@Override
 	public void initialize() {
 		super.initialize();
 		initializeRoboSantaLocation();
@@ -15,6 +16,7 @@ public class Day3Challenge2 extends Day3Challenge1 {
 		roboSantaLocation.setLocation(0, 0);
 	}
 	
+	@Override
 	public void processLine(String input) {
 		for( int i = 0; i < input.length(); i++ ) {
 			if( i % 2 == 0 ) {

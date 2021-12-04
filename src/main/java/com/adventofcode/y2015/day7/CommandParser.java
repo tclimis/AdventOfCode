@@ -11,6 +11,8 @@ import com.adventofcode.y2015.day7.commands.RShift;
 
 public class CommandParser {
 
+	private CommandParser() {}
+
 	public static Command parseCommand(String command) {
 		String[] commandArray = command.split(" ");
 

@@ -42,8 +42,11 @@ public class Day8Challenge1 extends AbstractChallenge {
 						case "row":
 							rotateRow(parsedCommand[2], parsedCommand[4]);
 							return;
+						default:
+							return;
 					}
 				}
+				return;
 			default:
 				return;
 		}

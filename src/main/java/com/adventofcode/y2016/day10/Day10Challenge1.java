@@ -12,8 +12,8 @@ public class Day10Challenge1 extends AbstractChallenge {
 	private Map<Integer, Outbox> outputs;
 
 	public void initialize() {
-		this.robots = new HashMap<Integer, Robot>();
-		this.outputs = new HashMap<Integer, Outbox>();
+		this.robots = new HashMap<>();
+		this.outputs = new HashMap<>();
 	}
 	
 	public void processLine(String input) {
@@ -90,10 +90,10 @@ public class Day10Challenge1 extends AbstractChallenge {
 	}
 	
 	public String getOutput() {
-		Iterator<Robot> robots = getRobots().values().iterator();
+		Iterator<Robot> robotIterator = getRobots().values().iterator();
 		boolean robotsAreEmpty = true;
-		while( robots.hasNext() ) {
-			Robot robot = robots.next();
+		while( robotIterator.hasNext() ) {
+			Robot robot = robotIterator.next();
 			if( robot.areHandsFull() ) {
 				robotsAreEmpty = false;
 				if( robot.getContents().contains(61) && robot.getContents().contains(17) ) {
@@ -101,11 +101,11 @@ public class Day10Challenge1 extends AbstractChallenge {
 				}
 				robot.giveHandContents();
 			}
-			if( !robots.hasNext() ) {
+			if( !robotIterator.hasNext() ) {
 				if( robotsAreEmpty ) {
 					return "";
 				}
-				robots = getRobots().values().iterator();
+				robotIterator = getRobots().values().iterator();
 				robotsAreEmpty = true;
 			}
 		}

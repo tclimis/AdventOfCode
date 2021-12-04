@@ -4,8 +4,8 @@ import com.adventofcode.y2015.day7.Computer;
 
 public class Put extends UnaryOperator {
 	
-	public Put(String param, String var) {
-		super(param, var);
+	public Put(String param, String variable) {
+		super(param, variable);
 	}
 
 	

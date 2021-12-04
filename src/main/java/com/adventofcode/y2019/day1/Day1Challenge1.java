@@ -11,7 +11,7 @@ public class Day1Challenge1 extends AbstractChallenge {
 
     @Override
     public void initialize() {
-        this.moduleMasses = new ArrayList<Integer>();
+        this.moduleMasses = new ArrayList<>();
     }
 
     @Override

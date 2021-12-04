@@ -5,7 +5,10 @@ import com.adventofcode.y2015.day7.commands.Command;
 
 public class Day7Challenge1 implements Challenge {
 	
-	public void initialize() {	}
+	@Override
+	public void initialize() {	
+		// There's no inital state to set for this challenge
+	}
 	
 	public void processLine(String input) {
 		Command command = CommandParser.parseCommand(input);

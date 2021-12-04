@@ -10,28 +10,28 @@ public class Day11Challenge1 extends AbstractChallenge {
 		setNewPassword("");
 	}
 	
-	private void setNewPassword(final String newPassword) {
+	private void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
 
-	public void processLine(final String input) {
+	public void processLine(String input) {
 		setNewPassword(createNewPassword(input));
 	}
 
-	private String createNewPassword(final String oldPassword) {
-		String newPassword = ensureEightAlphaLowerCase(oldPassword);
-		while (oldPassword.equals(newPassword) || !containsStraight(newPassword) || !containsTwoDoubles(newPassword)
-				|| containsIOL(newPassword)) {
-			newPassword = nextPassword(newPassword);
+	private String createNewPassword(String oldPassword) {
+		String tempNewPassword = ensureEightAlphaLowerCase(oldPassword);
+		while (oldPassword.equals(tempNewPassword) || !containsStraight(tempNewPassword) || !containsTwoDoubles(tempNewPassword)
+				|| containsIOL(tempNewPassword)) {
+			tempNewPassword = nextPassword(tempNewPassword);
 		}
-		return newPassword;
+		return tempNewPassword;
 	}
 
-	private String ensureEightAlphaLowerCase(final String oldPassword) {
-		String passwordFiller = "";
-		oldPassword.toLowerCase().replaceAll("[^a-z]", "");
+	private String ensureEightAlphaLowerCase(String oldPassword) {
+		StringBuilder passwordFiller = new StringBuilder();
+		oldPassword = oldPassword.toLowerCase().replaceAll("[^a-z]", "");
 		for (int i = 0; i < 8 - oldPassword.length(); i++) {
-			passwordFiller += "a";
+			passwordFiller.append("a");
 		}
 
 		return (oldPassword + passwordFiller).substring(0, 8);

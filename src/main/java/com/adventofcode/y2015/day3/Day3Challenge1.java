@@ -13,7 +13,7 @@ public class Day3Challenge1 extends AbstractChallenge {
 	private static final char WEST = '<';
 
 	private Point santaLocation = new Point();
-	private HashMap<Point, Integer> santaMap = new HashMap<Point, Integer>();
+	private HashMap<Point, Integer> santaMap = new HashMap<>();
 
 	public void initialize() {
 		initializeSantaLocation();

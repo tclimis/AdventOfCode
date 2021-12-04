@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.adventofcode.AbstractChallenge;
 
@@ -13,13 +15,15 @@ public class Day4Challenge1 extends AbstractChallenge {
 	
 	private Connection connection;
 
+	private static final String ACTION = "action";
+
 	@Override
 	public void initialize() {
 		
 		try {
 			String password = "To yoga, to yogurt, to rice and beans and cheese";
-			Connection connection = DriverManager.getConnection("jdbc:sqlserver://0.0.0.0:1433;DatabaseName=master", "sa", password);
-			setConnection(connection);
+			Connection tempConnection = DriverManager.getConnection("jdbc:sqlserver://0.0.0.0:1433;DatabaseName=master", "sa", password);
+			setConnection(tempConnection);
 			
 			setupDB();
 		}
@@ -79,35 +83,39 @@ public class Day4Challenge1 extends AbstractChallenge {
 	}
 	
 	private void queryExecute(String sql, Object[] params) throws SQLException {
-		PreparedStatement query = getConnection().prepareStatement(sql);
-		for( int i = 0; i < params.length; i++ ) {
-			query.setObject(i+1, params[i]);
+		try( PreparedStatement query = getConnection().prepareStatement(sql) ) {
+			for( int i = 0; i < params.length; i++ ) {
+				query.setObject(i+1, params[i]);
+			}
+			query.execute();
 		}
-		query.execute();
 	}
 	
 	private boolean tableExists(String tableName) throws SQLException {
-		String sql = "SELECT 1\n"
-				+ "FROM INFORMATION_SCHEMA.TABLES\n"
-				+ "WHERE TABLE_NAME = ?";
+		String sql = """
+			SELECT 1
+			FROM INFORMATION_SCHEMA.TABLES
+			WHERE TABLE_NAME = ?""";
 		Object[] params = {tableName};
 		return getResult(sql, params).next();
 	}
 	
 	private ResultSet getResult(String sql, Object[] params) throws SQLException {
-		PreparedStatement query = getConnection().prepareStatement(sql);
-		for( int i = 0; i < params.length; i++ ) {
-			query.setObject(i+1, params[i]);
+		try( PreparedStatement query = getConnection().prepareStatement(sql) ) {
+			for( int i = 0; i < params.length; i++ ) {
+				query.setObject(i+1, params[i]);
+			}
+			return query.executeQuery();
 		}
-		return query.executeQuery();
 	}
 	
 	private void createActionLogTable() throws SQLException {
-		String sql = "CREATE TABLE actionLog (\n"
-				+ "recnum INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_actionLog PRIMARY KEY\n"
-				+ ", timestamp DATETIME2 NOT NULL\n"
-				+ ", action NVARCHAR(100) NOT NULL\n"
-				+ ")";
+		String sql = """
+			CREATE TABLE actionLog (
+			\trecnum INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_actionLog PRIMARY KEY
+			\t, timestamp DATETIME2 NOT NULL
+			\t, action NVARCHAR(100) NOT NULL
+			)""";
 		queryExecute(sql);
 	}
 	
@@ -116,12 +124,13 @@ public class Day4Challenge1 extends AbstractChallenge {
 	}
 		
 	private void createSleepLogTable() throws SQLException {
-		String sql = "CREATE TABLE sleepLog(\n"
-				+ "recnum INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_sleepLog PRIMARY KEY\n"
-				+ ", guardID INT NOT NULL\n"
-				+ ", minute INT NOT NULL\n"
-				+ ", asleep BIT NOT NULL\n"
-				+ ")";
+		String sql = """
+			CREATE TABLE sleepLog(
+			\trecnum INT NOT NULL IDENTITY(1,1) CONSTRAINT PK_sleepLog PRIMARY KEY
+			\t, guardID INT NOT NULL
+			\t, minute INT NOT NULL
+			\t, asleep BIT NOT NULL
+			)""";
 		queryExecute(sql);
 	}
 	
@@ -143,8 +152,7 @@ public class Day4Challenge1 extends AbstractChallenge {
 				queryExecute(sql, params);
 			}
 			catch( SQLException e ) { 
-				System.err.println("Statement failed: \"" + sql + "\"");
-				e.printStackTrace();
+				Logger.getGlobal().log(Level.SEVERE, e, () -> "Statement failed: \"" + sql + "\"");
 			}
 		}
 	}
@@ -174,26 +182,30 @@ public class Day4Challenge1 extends AbstractChallenge {
 		boolean asleep = false;
 		int minute = 0;
 		
-		String insert = "INSERT INTO sleepLog(guardID, minute, asleep)\n"
-				+ "SELECT ?, minute, ?";
+		String insert = """
+			INSERT INTO sleepLog(guardID, minute, asleep)
+			SELECT ?, minute, ?""";
 		
-		String sql = "SELECT timestamp\n"
-				+ ", action\n"
-				+ "FROM actionLog\n"
-				+ "ORDER BY timestamp";
+		String sql = """
+			SELECT 
+			\ttimestamp
+			\t, action
+			FROM actionLog
+			ORDER BY timestamp""";
 		ResultSet results = getResult(sql);
 		
 		while( results.next() ) {
-			if( results.getString("action").contains("Guard") ) {
-				guardID = parseGuardID(results.getString("action"));
+			if( results.getString(ACTION).contains("Guard") ) {
+				guardID = parseGuardID(results.getString(ACTION));
 			}
-			if( results.getString("action").contains("falls asleep") ) {
+			
+			if( results.getString(ACTION).contains("falls asleep") ) {
 				asleep = true;
 				minute = results.getInt("minute");
 				Object[] params = {Integer.valueOf(guardID), Integer.valueOf(minute), Boolean.valueOf(asleep)};
 				queryExecute(insert, params);
 			}
-			if( results.getString("action").contains("wakes up") ) {
+			if( results.getString(ACTION).contains("wakes up") ) {
 				asleep = false;
 				minute = results.getInt("minute");
 				Object[] params = {Integer.valueOf(guardID), Integer.valueOf(minute), Boolean.valueOf(asleep)};

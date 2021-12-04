@@ -7,17 +7,24 @@ import com.adventofcode.AbstractChallenge;
 public class Day16Challenge1 extends AbstractChallenge {
 
 	private static final BigInteger INITIAL_STATE = new BigInteger("10111011111001111", 2);
+	private static final int DISK_LENGTH = 272;
 	
-	public void initialize() { }
+	@Override
+	public void initialize() {
+		// nothing to initialize
+	}
 	
-	public void processLine(String input) {	}
+	@Override
+	public void processLine(String input) {
+		// no lines to process
+	}
 	
 	public String getOutput() {
 		return checksum();
 	}
 
 	protected int getDiskLength() {
-		return 272;
+		return DISK_LENGTH;
 		// 11101010111100010 -- right answer
 		// 00000000000000000 -- current answer
 	}
@@ -45,7 +52,7 @@ public class Day16Challenge1 extends AbstractChallenge {
 		boolean abPrefixParity = getABPrefixParity(abPrefix);
 
 		boolean dragonParity = Integer.bitCount(dragonNumber(chunkSize - (numOfABPairs * lengthA + abPrefix))) % 2 == 1;
-		return abPrefixParity ^ numOfABPairsParity ^ abPrefixParity ^ dragonParity ? 0 : 1;
+		return (abPrefixParity ^ numOfABPairsParity) ^ (abPrefixParity ^ dragonParity) ? 0 : 1;
 	}
 
 	private boolean getABPrefixParity(int abPrefixLength) {

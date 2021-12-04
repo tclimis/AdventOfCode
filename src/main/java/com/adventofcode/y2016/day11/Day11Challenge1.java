@@ -10,6 +10,11 @@ import com.adventofcode.AbstractChallenge;
 public class Day11Challenge1 extends AbstractChallenge {
 
 	private Map<Integer, Node> graph;
+
+	// initial state
+	//                               C1c1P0p0R1r1S0s0T1t2E0
+	private static final Integer START = 0b0101000001010000011000;
+	private static final Integer END =   0b1111111111111111111111;
 	
 	public void initialize() {
 		buildGraph();
@@ -28,18 +33,17 @@ public class Day11Challenge1 extends AbstractChallenge {
 	@Override
 	// This should read the file, and set the start state
 	public void processLine(String input) {
-		// TODO Auto-generated method stub
+		// this challenage was too hard to be worth parsing programatically.  
+		// Instead manually parse into the bit strings below
 	}
 
+
 	protected Integer getStart() {
-		// initial state
-		//       C1c1P0p0R1r1S0s0T1t2E0
-		return 0b0101000001010000011000;
+		return START;
 	}
 
 	protected Integer getEnd() {
-		// everything on the 3rd floor
-		return 0b1111111111111111111111;
+		return END;
 	}
 
 	// Dijkstra's Algorithm

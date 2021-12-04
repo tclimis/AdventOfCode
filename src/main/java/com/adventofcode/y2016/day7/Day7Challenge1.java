@@ -39,13 +39,13 @@ public class Day7Challenge1 extends AbstractChallenge {
 	}
 
 	protected List<String> getHyperNets(String ipAddress) {
-		List<String> hyperNets = new ArrayList<String>();
+		List<String> hyperNets = new ArrayList<>();
 		for( int i = 0; i < ipAddress.length(); i++ ) {
 			if( ipAddress.substring(i).contains("[") && ipAddress.substring(i).contains("]") ) {
 				int start = ipAddress.indexOf('[', i) + 1;
 				int end = ipAddress.indexOf(']', start);
-				i = end;
 				hyperNets.add(ipAddress.substring(start, end));
+				return hyperNets;
 			}
 		}
 		return hyperNets;

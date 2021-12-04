@@ -10,7 +10,7 @@ public class Outbox implements Recipient {
 
 	public Outbox(int id) {
 		setID(id);
-		this.contents = new ArrayList<Integer>();
+		this.contents = new ArrayList<>();
 	}
 
 	private void setID(int id) {

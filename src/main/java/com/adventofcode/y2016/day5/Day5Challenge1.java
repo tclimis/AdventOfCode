@@ -1,6 +1,6 @@
 package com.adventofcode.y2016.day5;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -21,25 +21,22 @@ public class Day5Challenge1 extends AbstractChallenge {
 	}
 
 	protected String getDoorCode(String input) {
-		String doorCode = "";
+		StringBuilder tempDoorCode = new StringBuilder();
 		int i = 0;
-		while( doorCode.length() < 8 ) {
+		while( tempDoorCode.length() < 8 ) {
 			String hash = getHash(input + String.valueOf(i++));
 			if( hash.startsWith("00000") ) {
-				doorCode += hash.charAt(5);
+				tempDoorCode.append(hash.charAt(5));
 			}
 		}
-		return doorCode;
+		return tempDoorCode.toString();
 	}
 
 	protected String getHash(String string) {
 		try {
-			return DatatypeConverter.printHexBinary(MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8")));
+			return DatatypeConverter.printHexBinary(MessageDigest.getInstance("MD5").digest(string.getBytes(StandardCharsets.UTF_8)));
 		}
 		catch( NoSuchAlgorithmException e ) {
-			return e.getMessage();
-		}
-		catch( UnsupportedEncodingException e ) {
 			return e.getMessage();
 		}
 	}

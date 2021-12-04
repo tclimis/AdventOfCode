@@ -22,21 +22,19 @@ public class BasicFileParser implements FileParser {
 	public Collection<String> getFileLines() {
 		try {
 			FileReader fileReader = new FileReader(getFile());
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-			Collection<String> lines = new ArrayList<String>();
-			String line = new String();
-
-			while( (line = bufferedReader.readLine()) != null ) {
-				lines.add(line);
-			}
-
-			bufferedReader.close();
-
-			return lines;
+			return readFile(fileReader);
 		}
 		catch( IOException e ) {
-			return new ArrayList<String>();
+			return new ArrayList<>();
+		}
+	}
+
+	private Collection<String> readFile(FileReader fileReader) {
+		try( BufferedReader bufferedReader = new BufferedReader(fileReader) ) {
+			return bufferedReader.lines().toList();
+		}
+		catch( IOException e ) {
+			return new ArrayList<>();
 		}
 	}
 	

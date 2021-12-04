@@ -36,7 +36,7 @@ public class Day2Challenge1 extends AbstractChallenge {
 	}
 	
 	public String getOutput() {
-		return Integer.valueOf(getTotalWrappingPaper()).toString();
+		return Integer.toString(getTotalWrappingPaper());
 	}
 	
 	private int getTotalWrappingPaper() {

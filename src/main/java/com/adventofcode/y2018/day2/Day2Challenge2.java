@@ -10,7 +10,7 @@ public class Day2Challenge2 extends AbstractChallenge {
 	List<String> file;
 	
 	public void initialize() {
-		file = new ArrayList<String>();
+		file = new ArrayList<>();
 	}
 
 	@Override

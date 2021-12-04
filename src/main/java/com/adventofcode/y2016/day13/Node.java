@@ -21,7 +21,7 @@ public class Node {
 	}
 
 	public List<Point> getAdjacencyList() {
-		List<Point> adjacencyList = new ArrayList<Point>();
+		List<Point> adjacencyList = new ArrayList<>();
 		for( Point possibleNode : listAdjacentCombinations() ) {
 			Node node = new Node(possibleNode, this.input);
 			if( node.isValid() ) {
@@ -32,7 +32,7 @@ public class Node {
 	}
 
 	private List<Point> listAdjacentCombinations() {
-		List<Point> list = new ArrayList<Point>();
+		List<Point> list = new ArrayList<>();
 		list.add(new Point(getLabel().x + 1, getLabel().y));
 		list.add(new Point(getLabel().x - 1, getLabel().y));
 		list.add(new Point(getLabel().x, getLabel().y + 1));

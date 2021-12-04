@@ -16,23 +16,23 @@ public class Computer {
 	}
 
 	private void initializeMemory() {
-		this.memory = new HashMap<String, Integer>();
+		this.memory = new HashMap<>();
 	}
 
 	public static Computer getInstance() {
 		return instance;
 	}
 	
-	public void put(String var, Integer value) {
-		this.memory.put(var, value);
+	public void put(String variable, Integer value) {
+		this.memory.put(variable, value);
 	}
 	
 	public Map<String, Integer> getMemory() {
 		return memory;
 	}
 
-	public Integer get(String var) {
-		return this.memory.get(var);
+	public Integer get(String variable) {
+		return this.memory.get(variable);
 	}
 
 	public Integer and(Integer val1, Integer val2) {

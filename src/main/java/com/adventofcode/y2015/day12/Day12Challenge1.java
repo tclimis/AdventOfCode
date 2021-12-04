@@ -10,18 +10,20 @@ public class Day12Challenge1 extends AbstractChallenge {
 		setTotal(Integer.valueOf(0));
 	}
 	
-	private void setTotal(final Integer total) {
+	private void setTotal( Integer total) {
 		this.total = total;
 	}
 	
-	public void processLine(final String input) {
-		final String[] jsonArray = input.split("[\\[\\]\\{\\}:,=]");
-		for( final String element : jsonArray ) {
+	public void processLine( String input) {
+		 String[] jsonArray = input.split("[\\[\\]\\{\\}:,=]");
+		for(  String element : jsonArray ) {
 			try {
-				final Integer intVal = Integer.valueOf(element);
+				Integer intVal = Integer.valueOf(element);
 				setTotal(getTotal() + intVal);
 			}
-			catch( final NumberFormatException e ) {}
+			catch(  NumberFormatException e ) {
+				// if it's not number, skip it
+			}
 		}
 	}
 	

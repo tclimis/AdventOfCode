@@ -25,7 +25,7 @@ public class Day10Challenge1 extends AbstractChallenge {
 	
 	private int setIterations(final String arg) {
 		try {
-			return Integer.valueOf(arg).intValue();
+			return Integer.parseInt(arg);
 		}
 		catch( final NumberFormatException e ) {
 			return 0;
@@ -41,11 +41,11 @@ public class Day10Challenge1 extends AbstractChallenge {
 			return pattern;
 		}
 
-		String newPattern = "";
+		StringBuilder newPattern = new StringBuilder();
 		Integer counter = Integer.valueOf(1);
 		for( int i = 1; i < pattern.length() + 1; i++ ) {
 			if( i == pattern.length() || pattern.charAt(i - 1) != pattern.charAt(i) ) {
-				newPattern += counter.toString() + pattern.charAt(i - 1);
+				newPattern.append(counter.toString()).append(pattern.charAt(i - 1));
 				counter = 1;
 			}
 			// if this character equals the previous one
@@ -53,11 +53,11 @@ public class Day10Challenge1 extends AbstractChallenge {
 				counter++;
 			}
 		}
-		return getNewPattern(newPattern, iterations - 1);
+		return getNewPattern(newPattern.toString(), iterations - 1);
 	}
 	
 	public String getOutput() {
-		return Integer.valueOf(getPattern().length()).toString();
+		return Integer.toString(getPattern().length());
 	}
 
 }

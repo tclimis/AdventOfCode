@@ -1,6 +1,6 @@
 package com.adventofcode.y2016.day14;
 
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -20,9 +20,11 @@ public class Day14Challenge1 extends AbstractChallenge {
 	private Map<Integer, String> hashes;
 	private List<String> pad;
 
+	private static final int ZERO = 0;
+
 	public void initialize() {
-		this.pad = new ArrayList<String>();
-		this.hashes = new HashMap<Integer, String>();
+		this.pad = new ArrayList<>();
+		this.hashes = new HashMap<>();
 		setIndex(0);
 	}
 	
@@ -56,8 +58,8 @@ public class Day14Challenge1 extends AbstractChallenge {
 	}
 
 	private boolean has5In1000(String salt, String needle) {
-		int index = getIndex();
-		for( int i = index; i < index + 1000; i++ ) {
+		int tempIndex = getIndex();
+		for( int i = tempIndex; i < tempIndex + 1000; i++ ) {
 			String hash = "";
 			if( this.hashes.containsKey(i) ) {
 				hash = this.hashes.get(i);
@@ -80,13 +82,10 @@ public class Day14Challenge1 extends AbstractChallenge {
 
 	private String getHash(String string) {
 		try {
-			return DatatypeConverter.printHexBinary(MessageDigest.getInstance("MD5").digest(string.getBytes("UTF-8")))
+			return DatatypeConverter.printHexBinary(MessageDigest.getInstance("MD5").digest(string.getBytes(StandardCharsets.UTF_8)))
 					.toLowerCase();
 		}
 		catch( NoSuchAlgorithmException e ) {
-			return e.getMessage();
-		}
-		catch( UnsupportedEncodingException e ) {
 			return e.getMessage();
 		}
 	}
@@ -105,7 +104,7 @@ public class Day14Challenge1 extends AbstractChallenge {
 	}
 
 	protected int getTimes() {
-		return 0;
+		return ZERO;
 	}
 	
 	public String getOutput() {

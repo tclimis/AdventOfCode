@@ -5,13 +5,14 @@ import java.util.Map;
 
 public class Day6Challenge2 extends Day6Challenge1 {
 
+	@Override
 	public String getOutput() {
-		String output = "";
+		StringBuilder output = new StringBuilder();
 		for( Map<Character, Integer> position : getLetterCountMapList() ) {
-			output += getLeastCommonLetter(position);
+			output.append(getLeastCommonLetter(position));
 		}
 
-		return output;
+		return output.toString();
 	}
 
 	private String getLeastCommonLetter(Map<Character, Integer> position) {

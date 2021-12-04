@@ -41,23 +41,24 @@ public class Day4Challenge1 extends AbstractChallenge {
 		Map<Character, Integer> letterCountMap = countLetters(string);
 		Integer[] valueArray = letterCountMap.values().toArray(new Integer[letterCountMap.size()]);
 		Arrays.sort(valueArray);
-		String mostCommon = "";
+		StringBuilder mostCommon = new StringBuilder();
 		// loop backwards to get the highest 5
 		for( int i = valueArray.length - 1; i >= valueArray.length - 5; i-- ) {
-			mostCommon += getKeyByValue(letterCountMap, valueArray[i]);
+			mostCommon.append(getKeyByValue(letterCountMap, valueArray[i]));
 		}
-		return mostCommon;
+		return mostCommon.toString();
 	}
 
 	private Map<Character, Integer> countLetters(String string) {
-		Map<Character, Integer> letterCountMap = new HashMap<Character, Integer>();
+		Map<Character, Integer> letterCountMap = new HashMap<>();
 		for( int i = 0; i < string.length(); i++ ) {
-			if( string.charAt(i) == '-' ) {}
-			else if( letterCountMap.containsKey(string.charAt(i)) ) {
-				letterCountMap.put(string.charAt(i), letterCountMap.get(string.charAt(i)) + 1);
-			}
-			else {
-				letterCountMap.put(string.charAt(i), 1);
+			if( string.charAt(i) != '-' ) {
+				if( letterCountMap.containsKey(string.charAt(i)) ) {
+					letterCountMap.put(string.charAt(i), letterCountMap.get(string.charAt(i)) + 1);
+				}
+				else {
+					letterCountMap.put(string.charAt(i), 1);
+				}
 			}
 		}
 		return letterCountMap;

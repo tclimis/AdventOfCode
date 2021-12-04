@@ -1,6 +1,8 @@
 package com.adventofcode.y2015.day2;
 
 public class LineParser {
+
+	private LineParser() {}
 	
 	public static int[] parseLineToArray(String line) {
 		int[] intArray = new int[3];

@@ -8,8 +8,9 @@ public class Day1Challenge2 extends Day1Challenge1 {
 	private List<Integer> visitedNumbers;
 	private boolean end;
 
+	@Override
 	public void initialize() {
-		this.visitedNumbers = new ArrayList<Integer>();
+		this.visitedNumbers = new ArrayList<>();
 		this.end = false;
 	}
 	
@@ -26,10 +27,12 @@ public class Day1Challenge2 extends Day1Challenge1 {
 		return this.visitedNumbers;
 	}
 	
+	@Override
 	public String getOutput() {
 		return getSum().toString();
 	}
 	
+	@Override
 	public boolean runAgain() {
 		return !end;
 	}

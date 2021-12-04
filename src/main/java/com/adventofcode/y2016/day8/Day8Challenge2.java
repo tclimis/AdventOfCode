@@ -2,19 +2,20 @@ package com.adventofcode.y2016.day8;
 
 public class Day8Challenge2 extends Day8Challenge1 {
 	
+	@Override
 	public String getOutput() {
 		return displayScreen();
 	}
 	
 	private String displayScreen() {
-		String display = "";
+		StringBuilder display = new StringBuilder();
 		for( int j = 0; j < getDisplay()[0].length; j++ ) {
 			for( int i = 0; i < getDisplay().length; i++ ) {
-				display += (getDisplay()[i][j]) ? "#" : ".";
+				display.append(getDisplay()[i][j] ? "#" : ".");
 			}
-			display += "\n";
+			display.append("\n");
 		}
-		return display;
+		return display.toString();
 	}
 
 }

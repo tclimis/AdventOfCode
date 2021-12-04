@@ -8,6 +8,7 @@ public class Day4Challenge2 extends Day4Challenge1 {
 		output = "";
 	}
 	
+	@Override
 	public void processLine(String input) {
 		if( isRealRoom(input)
 				&& decryptRoom(getEncryptedName(input), getSector(input)).equals("northpole object storage") ) {
@@ -16,19 +17,20 @@ public class Day4Challenge2 extends Day4Challenge1 {
 	}
 
 	private String decryptRoom(String encryptedName, int sector) {
-		String roomName = "";
+		StringBuilder roomName = new StringBuilder();
 		for( int i = 0; i < encryptedName.length(); i++ ) {
 			if( encryptedName.charAt(i) >= 'a' && encryptedName.charAt(i) <= 'z' ) {
 				char newChar = (char) (Math.floorMod((encryptedName.charAt(i)) - 'a' + sector, 26) + 'a');
-				roomName += Character.toString(newChar);
+				roomName.append(newChar);
 			}
 			else {
-				roomName += " ";
+				roomName.append(" ");
 			}
 		}
-		return roomName.trim();
+		return roomName.toString().trim();
 	}
 	
+	@Override
 	public String getOutput() {
 		return output;
 	}

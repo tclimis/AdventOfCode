@@ -6,6 +6,7 @@ public class Day1Challenge1 extends AbstractChallenge {
 	
 	protected Integer sum;
 	
+	@Override
 	public void initialize() {
 		setSum(Integer.valueOf(0));
 	}
@@ -14,6 +15,7 @@ public class Day1Challenge1 extends AbstractChallenge {
 		this.sum = sum;
 	}
 
+	@Override
 	public void processLine(String input) {
 		setSum(getSum() + Integer.valueOf(input));
 	}
@@ -22,6 +24,7 @@ public class Day1Challenge1 extends AbstractChallenge {
 		return this.sum;
 	}
 	
+	@Override
 	public String getOutput() {
 		return getSum().toString();
 	}

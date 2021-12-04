@@ -1,4 +1,4 @@
-package com.adventofcode.y2015.day6.lightActions;
+package com.adventofcode.y2015.day6.light_actions;
 
 public class LightsUpAction extends AbstractLightAction {
 
@@ -9,7 +9,6 @@ public class LightsUpAction extends AbstractLightAction {
 				lightField[i][j]++;
 			}
 		}
-		return;
 	}
 
 }

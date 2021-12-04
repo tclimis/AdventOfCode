@@ -52,7 +52,7 @@ public class Node {
 	}
 
 	private int[] splitIntoArray(Integer label) {
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		for( int i = T_CHIP; i <= E_GEN; i += 4 ) {
 			list.add((label & (15 << i)) >> i);
 		}
@@ -64,15 +64,15 @@ public class Node {
 	}
 
 	private Integer reassembleLabel(int[] array) {
-		Integer label = getItemFloor(ELEVATOR);
+		Integer tempLabel = getItemFloor(ELEVATOR);
 		for( int i = array.length - 1; i >= 0; i-- ) {
-			label += (array[i] << ((array.length - 1 - i) * 4 + 2));
+			tempLabel += (array[i] << ((array.length - 1 - i) * 4 + 2));
 		}
-		return label;
+		return tempLabel;
 	}
 
 	public List<Integer> getAdjacencyList() {
-		List<Integer> adjacencyList = new ArrayList<Integer>();
+		List<Integer> adjacencyList = new ArrayList<>();
 		for( Integer possibleNode : listAdjacentCombinations() ) {
 			Node node = new Node(possibleNode);
 			if( node.isValid() ) {
@@ -83,7 +83,7 @@ public class Node {
 	}
 
 	private List<Integer> listAdjacentCombinations() {
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		list.addAll(findMoveUp());
 		list.addAll(findMoveDown());
 		return list;
@@ -91,7 +91,7 @@ public class Node {
 
 	// the case where item1 == item2 is the case of moving only 1 item
 	private List<Integer> findMoveUp() {
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		for( short item1 : ITEM_LIST ) {
 			for( short item2 : ITEM_LIST ) {
 				if( canMove(item1, item2, 1) ) {
@@ -113,12 +113,12 @@ public class Node {
 	}
 
 	private Integer moveTwo(short item1, short item2, int offset) {
-		int label = moveOne(ELEVATOR, offset, getLabel());
-		label = moveOne(item1, offset, label);
+		int tempLabel = moveOne(ELEVATOR, offset, getLabel());
+		tempLabel = moveOne(item1, offset, tempLabel);
 		if( item1 != item2 ) {
-			label = moveOne(item2, offset, label);
+			tempLabel = moveOne(item2, offset, tempLabel);
 		}
-		return label;
+		return tempLabel;
 	}
 
 	private Integer moveOne(short item, int offset, Integer label) {
@@ -126,7 +126,7 @@ public class Node {
 	}
 
 	private List<Integer> findMoveDown() {
-		List<Integer> list = new ArrayList<Integer>();
+		List<Integer> list = new ArrayList<>();
 		for( short item1 : ITEM_LIST ) {
 			for( short item2 : ITEM_LIST ) {
 				if( canMove(item1, item2, -1) ) {
@@ -160,10 +160,10 @@ public class Node {
 
 		short[] chips = { E_CHIP, D_CHIP, C_CHIP, P_CHIP, R_CHIP, S_CHIP, T_CHIP };
 		for( short chip : chips ) {
-			if( !hasMatchingGenerator(chip) ) {
-				if( hasGenerator(getItemFloor(chip)) ) {
-					return false;
-				}
+			if( !hasMatchingGenerator(chip) 
+				&& hasGenerator(getItemFloor(chip)) 
+			) {
+				return false;
 			}
 		}
 		return true;

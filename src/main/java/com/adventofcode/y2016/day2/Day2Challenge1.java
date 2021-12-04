@@ -33,7 +33,7 @@ public class Day2Challenge1 extends AbstractChallenge {
 	}
 	
 	protected void setupNumberMap() {
-		numberMap = new HashMap<Point, String>();
+		numberMap = new HashMap<>();
 		getNumberMap().putIfAbsent(ONE, "1");
 		getNumberMap().putIfAbsent(TWO, "2");
 		getNumberMap().putIfAbsent(THREE, "3");
@@ -77,6 +77,8 @@ public class Day2Challenge1 extends AbstractChallenge {
 			case 'L':
 				testMove.translate(-1, 0);
 				break;
+			default: 
+				// do nothing
 		}
 
 		// bound

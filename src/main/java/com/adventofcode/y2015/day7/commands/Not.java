@@ -4,8 +4,8 @@ import com.adventofcode.y2015.day7.Computer;
 
 public class Not extends UnaryOperator {
 	
-	public Not(String param, String var) {
-		super(param, var);
+	public Not(String param, String variable) {
+		super(param, variable);
 	}
 
 	

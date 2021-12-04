@@ -4,7 +4,7 @@ public class NullCommand implements Command {
 
 	
 	public void execute() {
-		return;
+		// This is the null opterator.  It does nothing
 	}
 
 }

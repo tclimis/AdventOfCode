@@ -4,11 +4,13 @@ public class Day8Challenge2 extends Day8Challenge1 {
 	
 	private int encodedCharacters;
 	
+	@Override
 	public void initialize() {
 		super.initialize();
 		encodedCharacters = 0;
 	}
 
+	@Override
 	public void processLine(String input) {
 		actualCharacters += input.length();
 		encodedCharacters += getEncodedCharacters(input);
@@ -26,6 +28,7 @@ public class Day8Challenge2 extends Day8Challenge1 {
 		return "\"" + string + "\"";
 	}
 	
+	@Override
 	public String getOutput() {
 		return String.valueOf(encodedCharacters - actualCharacters);
 	}

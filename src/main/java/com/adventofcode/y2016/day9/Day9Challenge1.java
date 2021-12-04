@@ -26,15 +26,15 @@ public class Day9Challenge1 extends AbstractChallenge {
 		Pattern pattern = Pattern.compile("\\(\\d+x\\d+\\)");
 		Matcher matcher = pattern.matcher(compressedString);
 		int index = 0;
-		String decompressedString = "";
+		StringBuilder decompressedString = new StringBuilder();
 		while( matcher.find(index) ) {
 			int[] params = parseMarker(matcher.group());
 			for( int i = 0; i < params[1]; i++ ) {
-				decompressedString += compressedString.substring(matcher.end(), matcher.end() + params[0]);
+				decompressedString.append(compressedString.substring(matcher.end(), matcher.end() + params[0]));
 			}
 			index = matcher.end() + params[0];
 		}
-		return decompressedString;
+		return decompressedString.toString();
 	}
 
 	protected int[] parseMarker(String marker) {

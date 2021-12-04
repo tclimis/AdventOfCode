@@ -8,9 +8,10 @@ public class Day1Challenge2 extends Day1Challenge1 {
 
 	private List<Point> placesVisited;
 	
+	@Override
 	public void initialize() {
 		super.initialize();
-		setPlacesVisited(new ArrayList<Point>());
+		setPlacesVisited(new ArrayList<>());
 		recordPoint();
 	}
 	
@@ -28,6 +29,7 @@ public class Day1Challenge2 extends Day1Challenge1 {
 		this.placesVisited = placesVisited;
 	}
 
+	@Override
 	public void processLine(String input) {
 		for( String instruction : getInstructions(input) ) {
 			changeDirection(getDirection(instruction));
@@ -44,9 +46,5 @@ public class Day1Challenge2 extends Day1Challenge1 {
 	private boolean beenHereBefore() {
 		return getPlacesVisited().contains(getLocation());
 	}
-
-
-
-
 
 }

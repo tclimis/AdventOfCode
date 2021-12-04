@@ -11,7 +11,7 @@ public class Day3Challenge1 extends AbstractChallenge {
 	protected Map<Point, Integer> fabric;
 
 	public void initialize() { 
-		fabric = new HashMap<Point, Integer>();
+		fabric = new HashMap<>();
 	}
 	
 	public void processLine(String input) {	

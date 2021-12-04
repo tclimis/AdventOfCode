@@ -1,5 +1,8 @@
 package com.adventofcode;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class AdventExecuter {
 
 	public static void main(final String[] args) {
@@ -11,12 +14,10 @@ public class AdventExecuter {
 
 			final String output = ChallengeRunner.run(challenge, app.getInput());
 
-			System.out.println(output);
+			Logger.getGlobal().info(output);
 		} catch (final IllegalArgumentException e) {
-			System.err.println(e.getMessage());
+			Logger.getGlobal().log(Level.SEVERE, e.getMessage(), e);
 		}
-
-		return;
 	}
 	
 }
