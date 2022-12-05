@@ -4,18 +4,18 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 import com.adventofcode.AbstractChallenge;
 
 public class Day5Challenge1 extends AbstractChallenge {
-	
+
 	private String doorCode;
 
 	public void initialize() {
 		doorCode = "";
 	}
-	
+
 	public void processLine(String input) {
 		doorCode = getDoorCode(input);
 	}
@@ -40,7 +40,7 @@ public class Day5Challenge1 extends AbstractChallenge {
 			return e.getMessage();
 		}
 	}
-	
+
 	public String getOutput() {
 		return doorCode;
 	}

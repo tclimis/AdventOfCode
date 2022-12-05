@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 
 import com.adventofcode.AbstractChallenge;
 
@@ -27,11 +27,11 @@ public class Day14Challenge1 extends AbstractChallenge {
 		this.hashes = new HashMap<>();
 		setIndex(0);
 	}
-	
+
 	private void setIndex(int index) {
 		this.index = index;
 	}
-	
+
 	public void processLine(String input) {
 		while( pad.size() < 64 ) {
 			pad.add(generateKey(input));
@@ -106,7 +106,7 @@ public class Day14Challenge1 extends AbstractChallenge {
 	protected int getTimes() {
 		return ZERO;
 	}
-	
+
 	public String getOutput() {
 		return String.valueOf(getIndex() - 1);
 	}
