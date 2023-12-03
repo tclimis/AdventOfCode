@@ -4,28 +4,40 @@ import com.adventofcode.AbstractChallenge;
 
 public class Day1Challenge1 extends AbstractChallenge {
 
-    int runningTotal;
+	int runningTotal;
 
-    @Override
-    public void initialize() {
-        runningTotal = 0;
-    }
+	@Override
+	public void initialize() {
+		runningTotal = 0;
+	}
 
-    @Override
-    public void processLine(String input) {
-        String numbers = input.replaceAll("\\D", "");
-        if( numbers.length() > 0 ) {
-            char first = numbers.charAt(0);
-            char last = numbers.charAt(numbers.length() - 1);
+	@Override
+	public void processLine(String input) {
+		runningTotal += Integer.valueOf(getFirstNumber(input) + getLastNumber(input));
+	}
 
-            int lineID = Character.getNumericValue(first) * 10 + Character.getNumericValue(last);
-            runningTotal += lineID;
-        }
-    }
+	protected String getFirstNumber(String input) {
+		for( char c : input.toCharArray() ) {
+			if( Character.isDigit(c) ) {
+				return String.valueOf(c);
+			}
+		}
+		return "";
+	}
 
-    @Override
-    public String getOutput() {
-        return String.valueOf(runningTotal);
-    }
+	protected String getLastNumber(String input) {
+		String tupni = new StringBuilder(input).reverse().toString();
+		for( char c : tupni.toCharArray() ) {
+			if( Character.isDigit(c) ) {
+				return String.valueOf(c);
+			}
+		}
+		return "";
+	}
+
+	@Override
+	public String getOutput() {
+		return String.valueOf(runningTotal);
+	}
 
 }
